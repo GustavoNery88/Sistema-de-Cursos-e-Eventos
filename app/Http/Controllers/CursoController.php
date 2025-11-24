@@ -8,6 +8,7 @@ use App\Models\Curso;
 class CursoController extends Controller
 {
 
+    // Imprime a lista de cursos na página inicial
     public function index()
     {
         $cursos = Curso::paginate(6); // exibe 6 cursos por página
@@ -19,9 +20,7 @@ class CursoController extends Controller
         return view('cursos.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+   // Armazena um novo curso no banco de dados
     public function store(Request $request)
     {
 
@@ -42,28 +41,22 @@ class CursoController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     */
+   // Exibe os detalhes de um curso específico
     public function show(string $id)
     {
         $curso = Curso::findOrFail($id);
         return view('cursos.show', compact('curso'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    // Exibe o formulário de edição para um curso específico
     public function edit(string $id)
     {
         $curso = Curso::findOrFail($id);
         return view('cursos.edit', compact('curso'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-
+    
+    // Atualiza as informações de um curso específico
     public function update(Request $request, string $id)
     {
         $curso = Curso::findOrFail($id);

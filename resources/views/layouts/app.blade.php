@@ -17,8 +17,12 @@
             <a class="navbar-brand" href="{{ route('home') }}">Cursos e Eventos</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ route('certificados.buscar') }}">Gerar Certificados</a>
+                        </li>
                     @auth
                         <li class="nav-item"><a class="nav-link" href="{{ route('cursos.create') }}">Cadastrar Cursos</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('participantes.create') }}">Cadastrar Participantes</a>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('usuarios.index') }}">Cadastrar Usuários</a>
                         </li>
@@ -31,7 +35,6 @@
             </div>
         </div>
     </nav>
-
 
 
     @if (session('success'))

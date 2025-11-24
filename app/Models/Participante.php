@@ -21,10 +21,10 @@ class Participante extends Model
         return $this->hasMany(Inscricao::class);
     }
 
-    // Um participante pode estar em vários cursos (através de inscrições)
+    // Um participante pode estar inscrito em vários cursos
     public function cursos()
     {
-        return $this->belongsToMany(Curso::class, 'inscricoes');
+        return $this->belongsToMany(Curso::class, 'inscricoes', 'participante_id', 'curso_id')
+            ->withTimestamps();
     }
 }
-

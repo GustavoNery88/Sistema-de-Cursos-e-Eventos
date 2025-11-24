@@ -23,6 +23,7 @@
                         <div class="card-footer text-center">
                             <a href="{{ route('cursos.show', $curso->id) }}" class="btn btn-secondary">Visualizar</a>
                             <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-primary">Editar</a>
+                            <a href="{{ route('participantes.show', $curso->id) }}" class="btn btn-success ">Participantes</a>
                         </div>
                     </div>
                 </div>

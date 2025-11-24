@@ -33,6 +33,7 @@ class Curso extends Model
     // Um curso tem vários participantes (através de inscrições)
     public function participantes()
     {
-        return $this->belongsToMany(Participante::class, 'inscricoes');
+        return $this->belongsToMany(Participante::class, 'inscricoes', 'curso_id', 'participante_id')
+            ->withTimestamps();
     }
 }
