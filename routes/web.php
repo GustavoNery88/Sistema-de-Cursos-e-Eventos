@@ -13,7 +13,11 @@ Route::get('/usuarios/login', [UsuarioController::class, 'login'])->name('login'
 Route::post('/usuarios/login', [UsuarioController::class, 'autenticar'])->name('usuarios.autenticar');
 Route::get('/usuarios/logout', [UsuarioController::class, 'logout'])->name('usuarios.logout');
 Route::get('/certificados/buscar', [CertificadoController::class, 'index'])->name('certificados.buscar');
-Route::get('/certificados/buscar/{cpf}', [CertificadoController::class, 'show'])->name('certificados.show');
+Route::get('/certificados/resultados', [CertificadoController::class, 'show'])->name('certificados.show');
+
+
+Route::get('/certificados/download/{curso}/{participante}', [CertificadoController::class, 'download'])->name('certificados.download');
+
 
 
 Route::middleware('auth')->group(function () {

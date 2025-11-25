@@ -19,14 +19,13 @@ class UsuarioController extends Controller
     {
         // Checa se o email já existe
         if (Usuario::where('email', $request->email)->exists()) {
-            return redirect()->route('usuarios.index')
-                ->with('error', 'E-mail já em uso!');
+            return redirect()->route('usuarios.index')->with('error', 'E-mail já em uso!');
         }
 
         // Verifica se a senha é nula ou tem menos de 8 caracteres
         if ($request->password == null || strlen($request->password) < 8) {
-            return redirect()->route('usuarios.index')
-                ->with('error', 'Senha deve ter no mínimo 8 caracteres!');
+            
+            return redirect()->route('usuarios.index')>with('error', 'Senha deve ter no mínimo 8 caracteres!');
         }
 
         // Cria o usuário
@@ -36,8 +35,7 @@ class UsuarioController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('usuarios.index')
-            ->with('success', 'Usuário cadastrado com sucesso!');
+        return redirect()->route('usuarios.index')->with('success', 'Usuário cadastrado com sucesso!');
     }
 
     public function login()

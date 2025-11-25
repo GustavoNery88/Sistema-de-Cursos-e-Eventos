@@ -20,20 +20,24 @@ class CursoController extends Controller
         return view('cursos.create');
     }
 
-   // Armazena um novo curso no banco de dados
+    // Armazena um novo curso no banco de dados
     public function store(Request $request)
     {
 
         $data = $request->all();
 
         if ($request->hasFile('certificado_frente')) {
-            $data['certificado_frente'] = $request->file('certificado_frente')
-                ->store('certificados', 'public');
+            $nomeFrente = time() . '_frente.' . $request->certificado_frente->extension();
+            $request->certificado_frente->move(public_path('certificados'), $nomeFrente);
+            $data['certificado_frente'] = 'certificados/' . $nomeFrente;
         }
+
         if ($request->hasFile('certificado_verso')) {
-            $data['certificado_verso'] = $request->file('certificado_verso')
-                ->store('certificados', 'public');
+            $nomeVerso = time() . '_verso.' . $request->certificado_verso->extension();
+            $request->certificado_verso->move(public_path('certificados'), $nomeVerso);
+            $data['certificado_verso'] = 'certificados/' . $nomeVerso;
         }
+
 
         Curso::create($data);
 
@@ -41,7 +45,7 @@ class CursoController extends Controller
     }
 
 
-   // Exibe os detalhes de um curso específico
+    // Exibe os detalhes de um curso específico
     public function show(string $id)
     {
         $curso = Curso::findOrFail($id);
@@ -55,7 +59,7 @@ class CursoController extends Controller
         return view('cursos.edit', compact('curso'));
     }
 
-    
+
     // Atualiza as informações de um curso específico
     public function update(Request $request, string $id)
     {
@@ -66,15 +70,11 @@ class CursoController extends Controller
         if ($request->hasFile('certificado_frente')) {
             $data['certificado_frente'] = $request->file('certificado_frente')
                 ->store('certificados', 'public');
-        } else {
-            $data['certificado_frente'] = $curso->certificado_frente;
         }
 
         if ($request->hasFile('certificado_verso')) {
             $data['certificado_verso'] = $request->file('certificado_verso')
                 ->store('certificados', 'public');
-        } else {
-            $data['certificado_verso'] = $curso->certificado_verso;
         }
 
         $curso->update($data);
