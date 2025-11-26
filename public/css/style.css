@@ -19,6 +19,7 @@ body {
     background-color: #343a40; /* mesma cor da navbar */
     padding: 10px 0;
     text-align: center;
+    margin-top: 50px;
 }
 
 .paginacao{
