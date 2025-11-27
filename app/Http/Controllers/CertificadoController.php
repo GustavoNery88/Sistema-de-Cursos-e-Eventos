@@ -30,19 +30,22 @@ class CertificadoController extends Controller
         return view('certificados.ListaCertificados', compact('certificados', 'participante'));
     }
 
-    // Download do certificado em PDF
     public function download($cursoId, $participanteId)
     {
-
-        // Busca os dados do curso pelo ID
         $curso = Curso::findOrFail($cursoId);
-        // Busca os dados do participante pelo ID
         $participante = Participante::findOrFail($participanteId);
 
-        // Renderiza a view do certificado
-        $pdf = Pdf::loadView('certificados.modelo', ['curso' => $curso,'participante' => $participante])->setPaper('A4', 'landscape'); // modo paisagem
+        // ativa carregamento de arquivos locais/remote para dompdf
+        $options = [
+            'isRemoteEnabled' => true,
+            'isHtml5ParserEnabled' => true,
+        ];
 
-        // Faz o download
+        // seta as options antes de carregar a view
+        Pdf::setOptions($options);
+
+        $pdf = Pdf::loadView('certificados.modelo', ['curso' => $curso, 'participante' => $participante])->setPaper('A4', 'landscape');
+
         return $pdf->download("certificado-{$participante->nome}.pdf");
     }
 }
