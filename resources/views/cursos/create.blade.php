@@ -17,7 +17,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="descricao" class="form-label">Descrição</label>
-                    <textarea class="form-control" id="descricao" name="descricao"></textarea required>
+                    <textarea class="form-control" id="descricao" name="descricao" required></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="local" class="form-label">Local</label>
@@ -37,30 +37,6 @@
                     <label for="data_fim" class="form-label">Data de Fim</label>
                     <input type="date" class="form-control" id="data_fim" name="data_fim" value="{{ old('data_fim') }}" required>
                 </div>
-                <div class="mb-3">
-                    <label for="certificado_frente" class="form-label">Certificado Frente (PNG/JPG)</label>
-                    <input type="file" class="form-control" id="certificado_frente" name="certificado_frente" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="certificado_verso" class="form-label">Certificado Verso (PNG/JPG)</label>
-                    <input type="file" class="form-control" id="certificado_verso" name="certificado_verso" required>
-                </div>
-                <div class="mb-3">
-                    <label for="fonte" class="form-label">Fonte</label>
-                    <input type="number" class="form-control" id="fonte" name="fonte" value="{{ old('fonte', 17) }}" required>
-                </div>
-                <div class="mb-3">
-                    <label for="coord_nome_cpf_x" class="form-label">Coord X Nome + CPF</label>
-                    <input type="number" class="form-control" id="coord_nome_cpf_x" name="coord_nome_cpf_x"
-                        value="{{ old('coord_nome_cpf_x', 196) }}" required>
-                </div>
-                <div class="mb-3">
-                    <label for="coord_nome_cpf_y" class="form-label">Coord Y Nome + CPF</label>
-                    <input type="number" class="form-control" id="coord_nome_cpf_y" name="coord_nome_cpf_y"
-                        value="{{ old('coord_nome_cpf_y', 178) }}" required>
-                </div>
-
                 <button type="submit" class="btn btn-primary">Salvar Curso</button>
             </form>
         </div>

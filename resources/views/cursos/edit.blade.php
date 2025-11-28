@@ -47,35 +47,6 @@
                     <input type="date" class="form-control" id="data_fim" name="data_fim"
                         value="{{ old('data_fim', $curso->data_fim) }}" required>
                 </div>
-
-                <div class="mb-3">
-                    <label for="fonte" class="form-label">Fonte</label>
-                    <input type="number" class="form-control" id="fonte" name="fonte"
-                        value="{{ old('fonte', $curso->fonte) }}" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="coord_nome_cpf_x" class="form-label">Coord X Nome + CPF</label>
-                    <input type="number" class="form-control" id="coord_nome_cpf_x" name="coord_nome_cpf_x"
-                        value="{{ old('coord_nome_cpf_x', $curso->coord_nome_cpf_x) }}" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="coord_nome_cpf_y" class="form-label">Coord Y Nome + CPF</label>
-                    <input type="number" class="form-control" id="coord_nome_cpf_y" name="coord_nome_cpf_y"
-                        value="{{ old('coord_nome_cpf_y', $curso->coord_nome_cpf_y) }}" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="certificado_frente" class="form-label">Certificado Frente</label>
-                    <input type="file" class="form-control" id="certificado_frente">
-                </div>
-
-                <div class="mb-3">
-                    <label for="certificado_verso" class="form-label">Certificado Verso</label>
-                    <input type="file" class="form-control" id="certificado_verso" name="certificado_verso">
-                </div>
-
                 <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                 <a href="{{ route('cursos.show', $curso->id) }}" class="btn btn-secondary">Cancelar</a>
             </form>

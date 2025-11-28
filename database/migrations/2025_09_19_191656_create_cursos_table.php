@@ -16,11 +16,6 @@ return new class extends Migration
             $table->integer('carga_horaria')->nullable();
             $table->date('data_inicio')->nullable();
             $table->date('data_fim')->nullable();
-            $table->string('certificado_frente')->nullable(); // caminho da imagem
-            $table->string('certificado_verso')->nullable();  // caminho da imagem
-            $table->integer('coord_nome_cpf_x')->default(0); // coordenadas do texto
-            $table->integer('coord_nome_cpf_y')->default(0);
-            $table->integer('fonte')->default(16); // tamanho da fonte
             $table->timestamps();
         });
     }

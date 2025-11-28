@@ -35,15 +35,6 @@ class CertificadoController extends Controller
         $curso = Curso::findOrFail($cursoId);
         $participante = Participante::findOrFail($participanteId);
 
-        // ativa carregamento de arquivos locais/remote para dompdf
-        $options = [
-            'isRemoteEnabled' => true,
-            'isHtml5ParserEnabled' => true,
-        ];
-
-        // seta as options antes de carregar a view
-        Pdf::setOptions($options);
-
         $pdf = Pdf::loadView('certificados.modelo', ['curso' => $curso, 'participante' => $participante])->setPaper('A4', 'landscape');
 
         return $pdf->download("certificado-{$participante->nome}.pdf");
